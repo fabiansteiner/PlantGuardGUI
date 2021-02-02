@@ -1,0 +1,33 @@
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 8em;
+  transition: color, width, 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.84);
+    width: 10em;
+
+    .icon {
+      color: #616060;
+    }
+  }
+
+  .icon {
+    transition: color, width, 1s;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.5em;
+    color: #879587;
+  }
+
+  .text {
+    width: 100%;
+  }
+}

@@ -1,0 +1,15 @@
+/*
+
+Every component has its own stylesheet under /components
+If another stylesheet is added it must be imported in /components/_all.scss
+
+ */
+
+@import 'base/all';
+@import 'utils/all';
+@import "pages/all";
+@import 'components/all';
+@import 'themes/all';
+
+
+

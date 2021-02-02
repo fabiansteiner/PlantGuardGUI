@@ -1,0 +1,38 @@
+.popup {
+  z-index: 2;
+
+  .white-container {
+    z-index: 3;
+    animation: fadeup 0.2s ease;
+  }
+
+  .grey-background {
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    animation: fadein 0.2s;
+    background-color: rgba(52, 51, 51, 0.5)
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeup {
+    from {
+      transform: translate(0, -100px);
+    }
+    to {
+      transform: translate(0);
+    }
+  }
+}
+

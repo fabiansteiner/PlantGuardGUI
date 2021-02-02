@@ -1,0 +1,35 @@
+
+.small-item-content {
+  position: relative;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  height: 3em;
+
+  div {
+    margin-right: 0.5em;
+  }
+
+  .values {
+    display: inline-flex;
+  }
+
+  .name {
+    font-family: Montserrat, Roboto, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    width: 12em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  button {
+    margin-left: auto;
+  }
+}
+
+
+
+
+
+

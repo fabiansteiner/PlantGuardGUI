@@ -1,0 +1,49 @@
+.center {
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%, 50%);
+  position: absolute;
+}
+
+.white {
+  color: white;
+}
+
+.information {
+  color: #7f7f7f;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.button-favorite {
+  color: red !important;
+}
+
+.button {
+
+  &-white {
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.35) !important;
+    border-color: white !important;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.56) !important;
+    }
+  }
+
+  &-center {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}
+
+.statistic-select {
+  display: flex;
+  justify-content: space-between;
+  /* vertical-align: bottom; */
+  flex-wrap: wrap;
+  margin-bottom: 0.5em;
+}
+
