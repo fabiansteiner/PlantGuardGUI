@@ -15,12 +15,12 @@ export class Identifiers {
 
     public static OPEN: number = 20;
     public static CLOSED: number = 40;
-    public static OPENING: number = 60;
+    public static OPENING: number = 160;
     public static CLOSING: number = 80;
     public static UNKNOWN: number = 100;
     public static CURRSENSEERROR: number = 120;
     public static MANUALOPEN: number = 140;
-    public static OPENINGMANUALLY: number = 160;
+    public static OPENINGMANUALLY: number = 60;
     public static CLOSINGMANUALLY: number = 180;
     public static LOCKED: number = 200;
     public static OFFLINE: number = 220;

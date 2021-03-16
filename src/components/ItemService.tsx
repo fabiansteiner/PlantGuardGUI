@@ -15,9 +15,9 @@ interface ItemState {
 // hold state and methods just like a react component would:
 export class ItemContainer extends Container<ItemState> {
     static websocket_url = "ws://192.168.178.109/ws";
-    //static websocket_url = "ws://" + window.location.hostname + ":8888";
+    //static websocket_url = "ws://" + window.location.hostname + "/ws";
     // @ts-ignore
-    state: ItemState = {ws: null, items: [], error:{waterPressureHigh:true, notEnoughWaterFlow:true, oneOrMoreValveErrors:false, oneOrMoreValvesNotClosed:false, oneOrMoreValvesOffline:false}, loading: true};
+    state: ItemState = {ws: null, items: [], error:{/*waterPressureHigh:true, notEnoughWaterFlow:true, oneOrMoreValveErrors:true, oneOrMoreValvesNotClosed:true, oneOrMoreValvesOffline:true*/}, loading: true};
     timeout;
 
 

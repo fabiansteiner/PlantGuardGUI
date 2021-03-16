@@ -30,6 +30,10 @@ import {ItemSubscribe} from "./ItemService";
 export default class ItemPlant extends Component<Plant> {
     _template;
 
+    getValveStatus(){
+        return "Hello";
+    }
+
     render() {
         return <ItemSubscribe>
             {(subscriber) => (
@@ -78,7 +82,7 @@ export default class ItemPlant extends Component<Plant> {
 
                     <div className="bottom">
                         {!this.props.autoWatering && <div className="warning">Automatische Bewässerung deaktiviert</div>}
-
+                        <div className="break-shizzle"></div>
                         {this.props.wateringStatus == Identifiers.STATUS_WATERING &&
                         <Button variant={"contained"} disabled className="water-button"
                                 color={"primary"}>Wird bewässert</Button>}
@@ -96,6 +100,19 @@ export default class ItemPlant extends Component<Plant> {
                                     event.stopPropagation();
                                     this._template.showWaterPopup();
                                 }}>Bewässern</Button>}
+                        {this.props.valveStatus == Identifiers.OPEN && <div className="valve-status-warning">OFFEN</div>}
+                        {this.props.valveStatus == Identifiers.CLOSED && <div className="valve-status-good">GESCHLOSSEN</div>}
+                        {this.props.valveStatus == Identifiers.OPENING && <div className="valve-status-warning">ÖFFNET</div>}
+                        {this.props.valveStatus == Identifiers.CLOSING && <div className="valve-status-warning">SCHLIEST</div>}
+                        {this.props.valveStatus == Identifiers.UNKNOWN && <div className="valve-status-warning">?</div>}
+                        {this.props.valveStatus == Identifiers.CURRSENSEERROR && <div className="valve-status-bad">FEHLER</div>}
+                        {this.props.valveStatus == Identifiers.MANUALOPEN && <div className="valve-status-warning">OFFEN(M)</div>}
+                        {this.props.valveStatus == Identifiers.OPENINGMANUALLY && <div className="valve-status-warning">ÖFFNET(M)</div>}
+                        {this.props.valveStatus == Identifiers.CLOSINGMANUALLY && <div className="valve-status-warning">SCHLIEST(M)</div>}
+                        {this.props.valveStatus == Identifiers.LOCKED && <div className="valve-status-warning">GESPERRT</div>}
+                        {this.props.valveStatus == Identifiers.OFFLINE && <div className="valve-status-bad">OFFLINE</div>}
+    
+                        
                     </div>
 
                     <ItemTemplate item={this.props} ref={(c) => this._template = c}/>

@@ -3,6 +3,18 @@
   color: white;
   padding: 0.5em 1em;
   text-align: center;
+  border-bottom: 1px solid #262626;
+  opacity: 0.85;
+
+}
+
+.valvewarning {
+  background-color: #fbe802;
+  color: rgb(0, 0, 0);
+  padding: 0.5em 1em;
+  text-align: center;
+  border-bottom: 1px solid #262626;
+  opacity: 0.91;
 }
 
 .dashboard {

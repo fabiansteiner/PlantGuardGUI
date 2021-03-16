@@ -31,15 +31,17 @@ export default class Dashboard extends Component<DashboardI> {
         if (items.length !== 0) {
             
             return <React.Fragment>
-            {error.waterPressureHigh && <div className={"error"}>
-                Water pressure is too high...
-            </div>}
-            <div className={"dashboard"}>
+                {error.waterPressureHigh && <div className={"error"}>WASSERDRUCK ZU HOCH - Bewässerungsvorgang abgebrochen.</div>}
+                {error.notEnoughWaterFlow && <div className={"error"}>WASSERFLUSS ZU NIEDRIG - Bewässerungsvorgang abgebrochen.</div>}
+                {error.oneOrMoreValvesOffline && <div className={"error"}>Verbindung zu Quetschventil/en ist unterbrochen.</div>}
+                {error.oneOrMoreValveErrors && <div className={"error"}>Beim auf- oder zumachen eine bzw. mehrere Ventile ist ein Fehler aufgetreten.</div>}
+                {error.oneOrMoreValvesNotClosed && <div className={"valvewarning"}>Bewässerung deaktiviert. Eins oder mehrere Ventile wurden manuell geöffnet.</div>}
+                <div className={"dashboard"}>
 
-                <Grid container direction={"row"} style={{justifyContent: "center"}} spacing={2}>
-                    <Plants items={items}/>
-                </Grid>
-            </div>
+                    <Grid container direction={"row"} style={{justifyContent: "center"}} spacing={2}>
+                        <Plants items={items}/>
+                    </Grid>
+                </div>
             </React.Fragment>
         } else {
             return <NoItems/>
