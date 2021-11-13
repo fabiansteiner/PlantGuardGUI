@@ -3,7 +3,7 @@ import {Component, Fragment} from "react";
 import {Route} from 'react-router-dom'
 import {Button,InputAdornment, MenuItem} from "@material-ui/core";
 import {Switch, TextField} from 'formik-material-ui';
-import {Identifiers, Items, PlantType} from "./ItemInterfaces";
+import {Identifiers, Items, PlantType, languageEN as language} from "./ItemInterfaces";
 import {Field, Form, Formik} from "formik";
 import {changeSettings} from "./Util";
 import ItemTitle from "./ItemTitle";
@@ -36,7 +36,7 @@ export default class PagePlant extends Component<IPagePlant> {
                     <Fragment>
                         <ItemTemplate item={pageTemplate.item} ref={(c) => this._itemTemplate = c}/>
 
-                        <ItemTitle item={pageTemplate.item} title={"Pflanze"}/>
+                        <ItemTitle item={pageTemplate.item} title={language.plantPageTitle}/>
 
                         <Formik
                             validateOnChange
@@ -57,35 +57,35 @@ export default class PagePlant extends Component<IPagePlant> {
 
                                 // @ts-ignore
                                 if (values.type === '') {
-                                    errors.type = 'Muss ausgefüllt werden';
+                                    errors.type = language.valuesIsMissing;
                                 }
 
                                 // @ts-ignore
                                 if (values.waterAmount === '') {
-                                    errors.waterAmount = 'Muss ausgefüllt werden';
-                                } else if (values.waterAmount > 2000 || values.waterAmount < 0) {
-                                    errors.waterAmount = 'Zu viel Wasser';
+                                    errors.waterAmount = language.valuesIsMissing;
+                                } else if (values.waterAmount > 5000 || values.waterAmount < 0) {
+                                    errors.waterAmount = language.keepWaterLimit;
                                 }
 
                                 // @ts-ignore
-                                if (!values.fertilizerPerLiter === '') {
-                                    errors.fertilizerPerLiter = 'Muss ausgefüllt werden';
-                                } else if (values.fertilizerPerLiter > 20 || values.fertilizerPerLiter < 0) {
-                                    errors.fertilizerPerLiter = 'Zu viel Dünger';
+                                if (!values.fertilizerAmount === '') {
+                                    errors.fertilizerAmount = language.valuesIsMissing;
+                                } else if (values.fertilizerAmount > 20 || values.fertilizerPerLiter < 0) {
+                                    errors.fertilizerAmount = language.keepFertilizerLimit;
                                 }
 
                                 // @ts-ignore
                                 if (!values.threshold === '') {
-                                    errors.threshold = 'Muss ausgefüllt werden';
-                                } else if (values.threshold > 100 || values.threshold < 0) {
-                                    errors.threshold = 'Maximal 100%';
+                                    errors.threshold = language.valuesIsMissing;
+                                } else if (values.threshold > 50 || values.threshold < 0) {
+                                    errors.threshold = language.keepThresholdLimit;
                                 }
 
                                 // @ts-ignore
                                 if (!values.waitTime === '') {
-                                    errors.waitTime = 'Muss ausgefüllt werden';
+                                    errors.waitTime = language.valuesIsMissing;
                                 } else if (values.waitTime > 3000 || values.waitTime < 0) {
-                                    errors.waitTime = 'Zu lange Wartezeit';
+                                    errors.waitTime = language.keepWaitingTimeLimit;
                                 }
                                 return errors;
                             }}
@@ -103,7 +103,7 @@ export default class PagePlant extends Component<IPagePlant> {
                                 <Form id={"form"}>
 
                                     <Fragment>
-                                        Automatische Bewässerung
+                                        {language.autoWatering}
                                         <Field component={Switch}
                                                color={"primary"}
                                                checked={values.autoWatering}
@@ -116,30 +116,30 @@ export default class PagePlant extends Component<IPagePlant> {
                                         name="type"
                                         select
                                         required
-                                        label={"Pflanzenart"}
+                                        label={language.plantType}
                                         component={TextField}
                                         fullWidth
                                         margin={"normal"}>
                                         <MenuItem key={1} value={PlantType.TOMATO}>
-                                            Tomate
+                                            {language.plantTypeTomato}
                                         </MenuItem>
                                         <MenuItem key={2} value={PlantType.CHILI}>
-                                            Chili
+                                            {language.plantTypeChilli}
                                         </MenuItem>
                                         <MenuItem key={3} value={PlantType.CUCUMBER}>
-                                            Gurke
+                                            {language.plantTypeCucumber}
                                         </MenuItem>
                                         <MenuItem key={4} value={PlantType.MARIHUANA}>
-                                            Marihuana
+                                            {language.plantTypeMarihuana}
                                         </MenuItem>
                                         <MenuItem key={5} value={PlantType.PAPRIKA}>
-                                            Paprika
+                                            {language.plantTypePaprika}
                                         </MenuItem>
                                         <MenuItem key={6} value={PlantType.MICROGREENS}>
-                                            Microgreens
+                                            {language.plantTypeMicrogreens}
                                         </MenuItem>
                                         <MenuItem key={7} value={PlantType.OTHER}>
-                                            Andere
+                                            {language.plantTypeOther}
                                         </MenuItem>
                                     </Field>
 
@@ -148,7 +148,7 @@ export default class PagePlant extends Component<IPagePlant> {
                                             required
                                             type="number"
                                             name="waterAmount"
-                                            label={"Wassermenge [ml]"}
+                                            label={language.amountOfWater}
                                             component={TextField}
                                             fullWidth
                                             margin={"normal"}
@@ -160,19 +160,19 @@ export default class PagePlant extends Component<IPagePlant> {
                                             required
                                             type="number"
                                             name="fertilizerAmount"
-                                            label={"Dünger pro Liter [ml]"}
+                                            label={language.amountOfFertilizer}
                                             component={TextField}
                                             fullWidth
                                             margin={"normal"}
                                             InputProps={{
                                                 endAdornment: <InputAdornment
-                                                    position="start">ml</InputAdornment>,
+                                                    position="start">ml/l</InputAdornment>,
                                             }}/>
                                         <Field
                                             required
                                             type="number"
                                             name="threshold"
-                                            label={"Schwellwert für die Bewässerung [%]"}
+                                            label={language.thresholdForWatering}
                                             component={TextField}
                                             fullWidth
                                             margin={"normal"}
@@ -184,36 +184,36 @@ export default class PagePlant extends Component<IPagePlant> {
                                             required
                                             type="number"
                                             name="waitTime"
-                                            label={"Minimaler Zeitabstand zwischen Bewässerungen [Minuten]"}
+                                            label={language.minimalPause}
                                             component={TextField}
                                             fullWidth
                                             margin={"normal"}
                                             InputProps={{
                                                 endAdornment: <InputAdornment
-                                                    position="start">Minuten</InputAdornment>,
+                                                    position="start">{language.minutes}</InputAdornment>,
                                             }}/>
 
     
                                     <Button variant={"contained"}
                                             style={{width: "100%", marginTop: "1em"}}
                                             color={"primary"}
-                                            type={"submit"}>Pflanze speichern</Button>
+                                            type={"submit"}>{language.safePlant}</Button>
 
                                     {pageTemplate.item.wateringStatus == Identifiers.STATUS_WATERING &&
                                     <Button variant={"contained"} disabled className="water-button"
                                             style={{width: "100%", marginTop: "1em"}}
-                                            color={"primary"}>Wird bewässert</Button>}
+                                            color={"primary"}>{language.irrigationButtonWatering}</Button>}
 
                                     {/*In der queue aber nicht das erste*/}
                                     {pageTemplate.item.wateringStatus == Identifiers.STATUS_IN_QUEUE &&
                                     <Button variant={"contained"} disabled className="water-button"
                                             style={{width: "100%", marginTop: "1em"}}
-                                            color={"primary"}>In der Warteschlange</Button>}
+                                            color={"primary"}>{language.irrigationButtonQueue}</Button>}
 
                                     {pageTemplate.item.wateringStatus == Identifiers.STATUS_NOTHINSCHEDULED &&
                                     <Button variant={"contained"} className="water-button" color={"primary"}
                                             style={{width: "100%", marginTop: "1em"}}
-                                            onClick={() => this._itemTemplate.showWaterPopup()}>Bewässern</Button>}
+                                            onClick={() => this._itemTemplate.showWaterPopup()}>{language.irrigationButton}</Button>}
                                 </Form>
                             )}/>
                     </Fragment>

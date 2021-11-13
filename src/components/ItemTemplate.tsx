@@ -67,11 +67,11 @@ export default class ItemTemplate extends Component<IItem> {
             <EditNamePopup item={this.props.item} isOpen={this.state.editNamePopup}
                            onClose={() => this.setState({editNamePopup: false})}/>
 
-            <AreYouSure title={"Jetzt bewässern?"} accept={"Bewässern"} back={"Zurück"} item={this.props.item}
+            <AreYouSure title={"Irrigate now?"} accept={"Irrigate"} back={"Back"} item={this.props.item}
                         isOpen={this.state.waterPopup} onClose={() => this.setState({waterPopup: false})}
                         onAccept={() => waterPlant(this.props.item as Plant, ItemService.state.ws)}/>
 
-            <AreYouSure title={"Willst du das wirklich löschen?"} accept={"Ja"} back={"Nein"}
+            <AreYouSure title={"Delete this item?"} accept={"Yes"} back={"No"}
                         item={this.props.item} isOpen={this.state.deletePopup}
                         onClose={() => this.setState({deletePopup: false})}
                         onAccept={() => this._deleteItem()}/>

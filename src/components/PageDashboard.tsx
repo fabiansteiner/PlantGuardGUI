@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Component} from "react";
 import Grid from "@material-ui/core/Grid";
-import {ErrorState, Items, Plant} from "./ItemInterfaces";
+import {ErrorState, Items, Plant, languageEN as language} from "./ItemInterfaces";
 import ItemPlant from "./ItemPlant";
 import NoItems from "./NoItems";
 
@@ -31,11 +31,11 @@ export default class Dashboard extends Component<DashboardI> {
         if (items.length !== 0) {
             
             return <React.Fragment>
-                {error.waterPressureHigh && <div className={"error"}>WASSERDRUCK ZU HOCH - Bewässerungsvorgang abgebrochen.</div>}
-                {error.notEnoughWaterFlow && <div className={"error"}>WASSERFLUSS ZU NIEDRIG - Bewässerungsvorgang abgebrochen.</div>}
-                {error.oneOrMoreValvesOffline && <div className={"error"}>Verbindung zu Quetschventil/en ist unterbrochen.</div>}
-                {error.oneOrMoreValveErrors && <div className={"error"}>Beim auf- oder zumachen eine bzw. mehrere Ventile ist ein Fehler aufgetreten.</div>}
-                {error.oneOrMoreValvesNotClosed && <div className={"valvewarning"}>Bewässerung deaktiviert. Eins oder mehrere Ventile wurden manuell geöffnet.</div>}
+                {error.waterPressureHigh && <div className={"error"}>{language.errorWaterPressure}</div>}
+                {error.notEnoughWaterFlow && <div className={"error"}>{language.errorWaterFlow}</div>}
+                {error.oneOrMoreValvesOffline && <div className={"error"}>{language.errorLostConnection}</div>}
+                {error.oneOrMoreValveErrors && <div className={"error"}>{language.errorAtValveMovement}</div>}
+                {error.oneOrMoreValvesNotClosed && <div className={"valvewarning"}>{language.warningOpenValves}</div>}
                 <div className={"dashboard"}>
 
                     <Grid container direction={"row"} style={{justifyContent: "center"}} spacing={2}>

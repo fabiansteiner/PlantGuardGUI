@@ -29,6 +29,8 @@ export class Identifiers {
 
 }
 
+
+
 export enum PlantType {
     TOMATO = 1,
     CHILI = 2,
@@ -75,5 +77,53 @@ export interface ErrorState{
     oneOrMoreValvesNotClosed:boolean
     oneOrMoreValveErrors:boolean
     oneOrMoreValvesOffline:boolean
+}
+
+export class languageEN{
+    public static irrigationButton = "Irrigate"
+    public static irrigationButtonQueue = "In queue..."
+    public static irrigationButtonWatering = "Irrigating..."
+
+    public static valveStateOpen = "OPEN"
+    public static valveStateClosed = "CLOSED"
+    public static valveStateOpening = "OPENING"
+    public static valveStateClosing = "CLOSING"
+    public static valveStateUnknown = "UNKNOWN"
+    public static valveStateError = "ERROR"
+    public static valveStateManualOpen = "OPEN (M)"
+    public static valveStateOpeningManually = "OPENING (M)"
+    public static valveStateClosingManually = "CLOSING (M)"
+    public static valveStateLocked = "LOCKED"
+    public static valveStateOffline = "OFFLINE"
+
+    public static plantPageTitle = "PLANT"
+    public static valuesIsMissing = "value must be entered"
+    public static keepThresholdLimit = "Between 0 and 50%"
+    public static keepWaitingTimeLimit = "max. 3000 minutes"
+    public static keepFertilizerLimit = "max. 20ml/l"
+    public static keepWaterLimit = "max. 5000ml"
+
+    public static autoWatering = "automatic irrigation"
+    public static plantType = "plant species"
+    public static amountOfWater = "amount of water [ml]"
+    public static amountOfFertilizer = "fertilizer per liter [ml/l]"
+    public static thresholdForWatering = "threshold for watering [%]"
+    public static minimalPause = "minimal time between two irrigations [minutes]"
+    public static safePlant = "store configuration"
+    public static minutes = "minutes"
+
+    public static plantTypeTomato = "tomatoe"
+    public static plantTypePaprika = "paprika"
+    public static plantTypeChilli = "chilli"
+    public static plantTypeCucumber = "cucumber"
+    public static plantTypeMarihuana = "marihuana"
+    public static plantTypeMicrogreens = "microgreens"
+    public static plantTypeOther = "other"
+
+    public static errorWaterPressure = "Last irrigation interrupted: waterpressure got too high - Resolve and press button."
+    public static errorWaterFlow = "Last irrigation interrupted: too less water flow - Resolve and press button."
+    public static errorLostConnection = "Lost connection to one or morve valves."
+    public static errorAtValveMovement = "One or more valves could not be fully opened/closed."
+    public static warningOpenValves = "Automatic irrigation is deactived for the time of manual interference. Close all valves to reactivate."
 }
 

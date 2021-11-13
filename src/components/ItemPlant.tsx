@@ -2,7 +2,7 @@ import * as React from "react";
 import {Component} from "react";
 import {Button, IconButton} from "@material-ui/core";
 import {MoreHoriz} from "@material-ui/icons";
-import {Identifiers, Plant, PlantType} from "./ItemInterfaces";
+import {Identifiers, Plant, PlantType, languageEN as language} from "./ItemInterfaces";
 import ItemTemplate from "./ItemTemplate";
 import Flowerpot from "./Flowerpot";
 //@ts-ignore
@@ -74,23 +74,23 @@ export default class ItemPlant extends Component<Plant> {
                                 }
                             })()}
                             <div className="line-break"></div>
-                            <Flowerpot level={this.props.soilMoisture}/>
+                            <Flowerpot level={this.props.soilMoisture === 80 ? 0:this.props.soilMoisture} unknownMoist={this.props.soilMoisture}/>
                         </div>
                     </div>
 
                     {this.props.wateringStatus == Identifiers.STATUS_WATERING && <img src={DropSVG} className="drops"/>}
 
                     <div className="bottom">
-                        {!this.props.autoWatering && <div className="warning">Automatische Bewässerung deaktiviert</div>}
+                        {!this.props.autoWatering && <div className="warning">Automatic watering deactivated</div>}
                         <div className="break-shizzle"></div>
                         {this.props.wateringStatus == Identifiers.STATUS_WATERING &&
                         <Button variant={"contained"} disabled className="water-button"
-                                color={"primary"}>Wird bewässert</Button>}
+                                color={"primary"}>{language.irrigationButtonWatering}</Button>}
 
                         {/*In der queue aber nicht das erste*/}
                         {this.props.wateringStatus == Identifiers.STATUS_IN_QUEUE &&
                         <Button variant={"contained"} disabled className="water-button"
-                                color={"primary"}>In der Warteschlange</Button>}
+                                color={"primary"}>{language.irrigationButtonQueue}</Button>}
 
                         {/*Nicht in der queue als kann man es bewässern*/}
                         {this.props.wateringStatus == Identifiers.STATUS_NOTHINSCHEDULED &&
@@ -99,18 +99,18 @@ export default class ItemPlant extends Component<Plant> {
                                     event.preventDefault();
                                     event.stopPropagation();
                                     this._template.showWaterPopup();
-                                }}>Bewässern</Button>}
-                        {this.props.valveStatus == Identifiers.OPEN && <div className="valve-status-warning">OFFEN</div>}
-                        {this.props.valveStatus == Identifiers.CLOSED && <div className="valve-status-good">GESCHLOSSEN</div>}
-                        {this.props.valveStatus == Identifiers.OPENING && <div className="valve-status-warning">ÖFFNET</div>}
-                        {this.props.valveStatus == Identifiers.CLOSING && <div className="valve-status-warning">SCHLIEST</div>}
-                        {this.props.valveStatus == Identifiers.UNKNOWN && <div className="valve-status-warning">?</div>}
-                        {this.props.valveStatus == Identifiers.CURRSENSEERROR && <div className="valve-status-bad">FEHLER</div>}
-                        {this.props.valveStatus == Identifiers.MANUALOPEN && <div className="valve-status-warning">OFFEN(M)</div>}
-                        {this.props.valveStatus == Identifiers.OPENINGMANUALLY && <div className="valve-status-warning">ÖFFNET(M)</div>}
-                        {this.props.valveStatus == Identifiers.CLOSINGMANUALLY && <div className="valve-status-warning">SCHLIEST(M)</div>}
-                        {this.props.valveStatus == Identifiers.LOCKED && <div className="valve-status-warning">GESPERRT</div>}
-                        {this.props.valveStatus == Identifiers.OFFLINE && <div className="valve-status-bad">OFFLINE</div>}
+                                }}>{language.irrigationButton}</Button>}
+                        {this.props.valveStatus == Identifiers.OPEN && <div className="valve-status-warning">{language.valveStateOpen}</div>}
+                        {this.props.valveStatus == Identifiers.CLOSED && <div className="valve-status-good">{language.valveStateClosed}</div>}
+                        {this.props.valveStatus == Identifiers.OPENING && <div className="valve-status-warning">{language.valveStateOpening}</div>}
+                        {this.props.valveStatus == Identifiers.CLOSING && <div className="valve-status-warning">{language.valveStateClosing}</div>}
+                        {this.props.valveStatus == Identifiers.UNKNOWN && <div className="valve-status-warning">{language.valveStateUnknown}</div>}
+                        {this.props.valveStatus == Identifiers.CURRSENSEERROR && <div className="valve-status-bad">{language.valveStateError}</div>}
+                        {this.props.valveStatus == Identifiers.MANUALOPEN && <div className="valve-status-warning">{language.valveStateManualOpen}</div>}
+                        {this.props.valveStatus == Identifiers.OPENINGMANUALLY && <div className="valve-status-warning">{language.valveStateOpeningManually}</div>}
+                        {this.props.valveStatus == Identifiers.CLOSINGMANUALLY && <div className="valve-status-warning">{language.valveStateClosingManually}</div>}
+                        {this.props.valveStatus == Identifiers.LOCKED && <div className="valve-status-warning">{language.valveStateLocked}</div>}
+                        {this.props.valveStatus == Identifiers.OFFLINE && <div className="valve-status-bad">{language.valveStateOffline}</div>}
     
                         
                     </div>
